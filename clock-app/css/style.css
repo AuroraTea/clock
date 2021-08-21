@@ -30,13 +30,15 @@ body {
 }
 
 .menu section:nth-child(1) {
-  flex: 382;
-  background-color: #000;
+  box-sizing: border-box;
+  flex: 2;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu section:nth-child(2) {
-  flex: 618;
+  flex: 8;
 }
 
 touch-bar {
@@ -55,9 +57,14 @@ touch-bar section {
   flex: 1;
 }
 
-.clock {
+.wall {
   width: 100%;
   height: 100vh;
+}
+
+.clock {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,7 +72,6 @@ touch-bar section {
 
 .peach {
   background: #EACCCC;
-  width: 100%;
 }
 
 .peach p {
@@ -260,12 +266,15 @@ touch-bar section {
 }
 
 .mini {
-  width: 800px;
-  height: 200px;
+  height: 112.5px;
+  background-color: #000;
+  margin: 12.5px;
+  width: 200px;
+  border-radius: 10px;
 }
 
-.mini .peach {
-  transform: scale(0.2);
+.mini .clock {
+  transform: scale(0.4);
 }
 
 @media (max-width: 100rem) {

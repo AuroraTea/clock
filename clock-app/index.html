@@ -6,32 +6,71 @@
   <title>一个时钟</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.min.css"/>
   <link rel="stylesheet" type="text/css" href="./css/font.css">
+  <script type="text/javascript">
+    document.addEventListener('plusready', function(){
+      //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
+    });
+  </script>
 </head>
 <body>
 	<clock-app id="clock-app">
+
+    <div class="mask">
+      <div class="menu">
+        <section>
+          <div class="mini" style="background: #EACCCC;">
+            <div class="peach clock" >
+              <p id="1">{{h1}}</p>
+              <p id="2">{{h2}}</p>
+              <p id="3">:</p>
+              <p id="4">{{m1}}</p>
+              <p id="5">{{m2}}</p>
+              <p id="6">:</p>
+              <p id="7">{{s1}}</p>
+              <p id="8">{{s2}}</p>
+            </div>
+          </div>
+          <div class="mini">
+            <div class="digital clock">{{time}}</div>
+          </div>
+          <div class="mini">
+            <div class="glitch clock">
+              <p :data-text="time">{{time}}</p>
+            </div>
+          </div>
+        </section>
+        <section></section>
+      </div>
+    </div>
 
     <touch-bar>
       <!-- <section @click="tinier()"></section> -->
       <section @click="selectMode()"></section>
       <!-- <section @click="bigger()"></section> -->
     </touch-bar>
-
-    <div v-if="mode == 0" class="peach clock" >
-      <p id="1">{{h1}}</p>
-      <p id="2">{{h2}}</p>
-      <p id="3">:</p>
-      <p id="4">{{m1}}</p>
-      <p id="5">{{m2}}</p>
-      <p id="6">:</p>
-      <p id="7">{{s1}}</p>
-      <p id="8">{{s2}}</p>
+    <div class="wall" v-if="mode == 0">
+      <div class="peach clock" >
+        <p id="1">{{h1}}</p>
+        <p id="2">{{h2}}</p>
+        <p id="3">:</p>
+        <p id="4">{{m1}}</p>
+        <p id="5">{{m2}}</p>
+        <p id="6">:</p>
+        <p id="7">{{s1}}</p>
+        <p id="8">{{s2}}</p>
+      </div>
     </div>
 
-    <div v-if="mode == 1" class="digital clock">{{time}}</div>
-
-    <div v-if="mode == 2" class="glitch clock">
-      <p :data-text="time">{{time}}</p>
+    <div class="wall" v-if="mode == 1">
+      <div class="digital clock">{{time}}</div>
     </div>
+
+    <div class="wall" v-if="mode == 2">
+      <div class="glitch clock">
+        <p :data-text="time">{{time}}</p>
+      </div>
+    </div>
+
   </clock-app>
 
     <!-- {{time}} -->
