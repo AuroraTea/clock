@@ -7,13 +7,8 @@ import GlitchClock from './views/GlitchClock.vue'
 const VisOption = ref(false)
 
 const clock = ref(PeachClock)
-// const changeClock = {
-//   PeachClock:   ()=>clock.value = PeachClock,
-//   DigitalClock: ()=>clock.value = DigitalClock,
-//   GlitchClock:  ()=>clock.value = GlitchClock,
-// }
 
-const changeClock = (c)=> {
+const changeClockTo = (c)=> {
   clock.value = c
 }
 
@@ -24,7 +19,11 @@ const changeClock = (c)=> {
     <component :is='clock'/>
   </div>
   <div class="mask" @click="VisOption = false" v-show="VisOption">
-    <div class="option" @click.stop="changeClock(DigitalClock)"></div>
+    <div class="option" @click.stop>
+      <div class="selection" @click="changeClockTo(PeachClock)"></div>
+      <div class="selection" @click="changeClockTo(DigitalClock)"></div>
+      <div class="selection" @click="changeClockTo(GlitchClock)"></div>
+    </div>
   </div>
 </template>
 
@@ -70,7 +69,17 @@ p{
 .option{
   width: 600px;
   height: 400px;
+  padding: 20px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: rgba($color: #fff, $alpha: .6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  gap: 20px;
+  .selection{
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    border-radius: 8px;
+  }
 }
 </style>
