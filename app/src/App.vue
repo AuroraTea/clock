@@ -7,10 +7,14 @@ import GlitchClock from './views/GlitchClock.vue'
 const VisOption = ref(false)
 
 const clock = ref(PeachClock)
-const changeClock = {
-  PeachClock:   ()=>clock.value = PeachClock,
-  DigitalClock: ()=>clock.value = DigitalClock,
-  GlitchClock:  ()=>clock.value = GlitchClock,
+// const changeClock = {
+//   PeachClock:   ()=>clock.value = PeachClock,
+//   DigitalClock: ()=>clock.value = DigitalClock,
+//   GlitchClock:  ()=>clock.value = GlitchClock,
+// }
+
+const changeClock = (c)=> {
+  clock.value = c
 }
 
 </script>
@@ -20,7 +24,7 @@ const changeClock = {
     <component :is='clock'/>
   </div>
   <div class="mask" @click="VisOption = false" v-show="VisOption">
-    <div class="option" @click.stop="changeClock['DigitalClock']"></div>
+    <div class="option" @click.stop="changeClock(DigitalClock)"></div>
   </div>
 </template>
 
