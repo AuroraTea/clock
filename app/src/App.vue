@@ -8,9 +8,6 @@ const VisOption = ref(false)
 
 const clock = ref(PeachClock)
 
-const changeClockTo = (c)=> {
-  clock.value = c
-}
 
 </script>
 
@@ -20,9 +17,9 @@ const changeClockTo = (c)=> {
   </div>
   <div class="mask" @click="VisOption = false" v-show="VisOption">
     <div class="option" @click.stop>
-      <div class="selection" @click="changeClockTo(PeachClock)"></div>
-      <div class="selection" @click="changeClockTo(DigitalClock)"></div>
-      <div class="selection" @click="changeClockTo(GlitchClock)"></div>
+      <div class="selection" @click="clock = PeachClock"></div>
+      <div class="selection" @click="clock = DigitalClock"></div>
+      <div class="selection" @click="clock = GlitchClock"></div>
     </div>
   </div>
 </template>
@@ -38,10 +35,8 @@ p{
   margin: 0;
 }
 #app {
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   color: #2c3e50;
 }
 .view{
