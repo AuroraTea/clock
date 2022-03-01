@@ -17,7 +17,7 @@ const clock = ref(PeachClock)
   </div>
   <div class="mask" @click="VisOption = false" v-show="VisOption">
     <div class="option" @click.stop>
-      <div class="selection" @click="clock = PeachClock"></div>
+      <div class="selection active" @click="clock = PeachClock"></div>
       <div class="selection" @click="clock = DigitalClock"></div>
       <div class="selection" @click="clock = GlitchClock"></div>
     </div>
@@ -75,6 +75,21 @@ p{
     height: 100px;
     background-color: #000;
     border-radius: 8px;
+  }
+  .active{
+    position: relative;
+
+  }
+  .active::after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    content: ' ';
   }
 }
 </style>
