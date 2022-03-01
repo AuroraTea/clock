@@ -10,11 +10,11 @@ var app = new Vue({
       s2: '',
       time: '',
       mode: 0,
-      
+      ifTouchBar: true,
     }
   },
   methods: {
-    selectMode(){
+    changeMode(){
       app.mode<2 ? app.mode++ : app.mode=0;
       console.log(app.mode);
     },

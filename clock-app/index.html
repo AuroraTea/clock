@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>一个时钟</title>
-	<link rel="stylesheet" type="text/css" href="./css/style.min.css"/>
-  <link rel="stylesheet" type="text/css" href="./css/font.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
   <script type="text/javascript">
     document.addEventListener('plusready', function(){
       //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。")
@@ -15,7 +14,7 @@
 <body>
 	<clock-app id="clock-app">
 
-    <div class="mask">
+    <!-- <div class="mask">
       <div class="menu">
         <section>
           <div class="mini" style="background: #EACCCC;">
@@ -41,13 +40,15 @@
         </section>
         <section></section>
       </div>
+    </div> -->
+
+    <div class="mask" @click.stop="ifTouchBar = !ifTouchBar"></div>
+    <div id="touch-bar" v-if="ifTouchBar">
+      <!-- <section @click="tinier()"></section> -->
+      <section @click.stop="changeMode"></section>
+      <!-- <section @click="bigger()"></section> -->
     </div>
 
-    <touch-bar>
-      <!-- <section @click="tinier()"></section> -->
-      <section @click="selectMode()"></section>
-      <!-- <section @click="bigger()"></section> -->
-    </touch-bar>
     <div class="wall" v-if="mode == 0">
       <div class="peach clock" >
         <p id="1">{{h1}}</p>
